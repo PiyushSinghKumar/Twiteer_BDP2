@@ -1,4 +1,8 @@
 [core]
-    remote = pleasework
+    remote = dvcplw
 ['remote "pleasework"']
     url = gdrive://19j8Uj4u_5QnMU-7BfGyHl7hU1b4P6YF8
+['remote "pleaseworkplease"']
+    url = gdrive://19j8Uj4u_5QnMU-7BfGyHl7hU1b4P6YF8
+['remote "dvcplw"']
+    url = gdrive://1xrePUzGAGyooj_TZJS-XmpPoBoNNQUKm
