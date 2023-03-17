@@ -1,0 +1,26 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo docker info
+      - docker info 
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/g9c2f0c2
+      - REPOSITORY_URI=public.ecr.aws/g9c2f0c2/tweet
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...          
+      - docker build -t my-app:2.0 .
+      - docker tag my-app:2.0 public.ecr.aws/g9c2f0c2/tweet:tweet_app1
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push public.ecr.aws/g9c2f0c2/tweet:tweet_app1
+      - echo Writing image definitions file...
+      # - printf '[{"name”:"tweet","imageUri":"%s"}]' public.ecr.aws/g9c2f0c2/tweet:tweet_app1 > imagedefinitions.json
+      - printf '[{"name":"tweetapp","imageUri":"public.ecr.aws/g9c2f0c2/tweet:tweet_app1"}]' > imagedefinitions.json
+artifacts:
+  files: imagedefinitions.json
