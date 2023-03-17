@@ -16,7 +16,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 current_dir = current_dir.replace('utilities', 'data')
 
 # Load the CSV file
-df = pd.read_csv(os.path.join('classified_tweets.csv'))
+df = pd.read_csv(os.path.join(current_dir,'classified_tweets.csv'))
 
 # Tokenize the tweets
 tokenizer = Tokenizer()

@@ -32,7 +32,10 @@ stages:
       - data/classified_tweets.csv
       - utilities/tweets_classification.py
     outs:
-      - sentiment_analysis_model.h5
-      - tokenizer.pickle
+      - sentiment_analysis_model.h5:
+          cache: false
+          persist: true
+                
+      - tokenizer.pickle:
           cache: false
           persist: true
