@@ -1,0 +1,38 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python utilities/tweets_extraction.py
+    deps:
+    - path: utilities/tweets_extraction.py
+      md5: 6a6773d3240d244c2b5eb5092a5898db
+      size: 3520
+    outs:
+    - path: data/raw_tweets.json
+      md5: afd64da31e7fa8ca0aa614f51e0f8c59
+      size: 202937
+  process:
+    cmd: python utilities/tweets_cleaning.py
+    deps:
+    - path: data/raw_tweets.json
+      md5: afd64da31e7fa8ca0aa614f51e0f8c59
+      size: 202937
+    - path: utilities/tweets_cleaning.py
+      md5: 5f4a00446f21775e2319ce0eeab40608
+      size: 2191
+    outs:
+    - path: data/cleaned_tweets.csv
+      md5: db7bf6e39cc830ed2dcaa2856237095f
+      size: 37936
+  classification:
+    cmd: python utilities/tweets_classification.py
+    deps:
+    - path: data/cleaned_tweets.csv
+      md5: db7bf6e39cc830ed2dcaa2856237095f
+      size: 37936
+    - path: utilities/tweets_classification.py
+      md5: 52f44363ff8feb7edb2ff8853f220009
+      size: 1185
+    outs:
+    - path: data/classified_tweets.csv
+      md5: 8ee720f937c82a7b4c712dca7ae898fd
+      size: 44836
