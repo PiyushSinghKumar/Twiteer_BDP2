@@ -25,3 +25,14 @@ stages:
       - data/classified_tweets.csv:
           cache: false
           persist: true
+
+  modelling:
+    cmd: python utilities/model.py
+    deps:
+      - data/classified_tweets.csv
+      - utilities/tweets_classification.py
+    outs:
+      - sentiment_analysis_model.h5
+      - tokenizer.pickle
+          cache: false
+          persist: true

@@ -4,35 +4,35 @@ stages:
     cmd: python utilities/tweets_extraction.py
     deps:
     - path: utilities/tweets_extraction.py
-      md5: 6a6773d3240d244c2b5eb5092a5898db
-      size: 3520
+      md5: 01a05c2cce2f924fc350bd9027d964d1
+      size: 3519
     outs:
     - path: data/raw_tweets.json
-      md5: afd64da31e7fa8ca0aa614f51e0f8c59
-      size: 202937
+      md5: 92f2e1123d89f38e6ec78a20d02f4398
+      size: 403411
   process:
     cmd: python utilities/tweets_cleaning.py
     deps:
     - path: data/raw_tweets.json
-      md5: afd64da31e7fa8ca0aa614f51e0f8c59
-      size: 202937
+      md5: 92f2e1123d89f38e6ec78a20d02f4398
+      size: 403411
     - path: utilities/tweets_cleaning.py
       md5: 5f4a00446f21775e2319ce0eeab40608
       size: 2191
     outs:
     - path: data/cleaned_tweets.csv
-      md5: db7bf6e39cc830ed2dcaa2856237095f
-      size: 37936
+      md5: 4dae169fcf2ea7b3df833538cb10a67c
+      size: 45595
   classification:
     cmd: python utilities/tweets_classification.py
     deps:
     - path: data/cleaned_tweets.csv
-      md5: db7bf6e39cc830ed2dcaa2856237095f
-      size: 37936
+      md5: 4dae169fcf2ea7b3df833538cb10a67c
+      size: 45595
     - path: utilities/tweets_classification.py
       md5: 52f44363ff8feb7edb2ff8853f220009
       size: 1185
     outs:
     - path: data/classified_tweets.csv
-      md5: 8ee720f937c82a7b4c712dca7ae898fd
-      size: 44836
+      md5: ad421c9ed1bb864454e382a42187244a
+      size: 53963

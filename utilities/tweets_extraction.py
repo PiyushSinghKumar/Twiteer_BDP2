@@ -12,7 +12,7 @@ load_dotenv()
 # Get the Bearer token value from the environment variable
 bearer_token = os.getenv('BEARER_TOKEN')
 
-# Authenticate with Twitter API using API keys, API secret key, and Bearer token
+#Authenticate with Twitter API using API keys, API secret key, and Bearer token
 auth = tweepy.OAuth2BearerHandler(bearer_token)
 api = tweepy.API(auth)
 
