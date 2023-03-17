@@ -68,7 +68,7 @@ while True:
 #             f.write('\n')
 
 
-# # Print confirmation message
+## Print confirmation message
 # print(f"Saved {len(tweets)} tweets to raw_tweets.json")
 
 # Save the extracted data as JSON
